@@ -7,7 +7,7 @@ You need to install "docker" into your computer first if it is not installed.
 4. run `sudo docker build -t node .` to build the `node` image
 5. enter into the `botnode` path, e.g., `cd ./botnode/`
 6. run `sudo docker build -t botnode .` to build the `botnode` image
-7. run `sudo docker image ps` to check the images, the terminal will output contents like the following information
+7. run `sudo docker image ls` to check the images, the terminal will output contents like the following information
    ```sh
    REPOSITORY           TAG       IMAGE ID       CREATED          SIZE
    botnode              latest    b5e93a73f3e5   6 seconds ago        384MB
