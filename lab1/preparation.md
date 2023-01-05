@@ -31,11 +31,12 @@ We will start seven containers in lab1. Four of them are honest nodes (1 bootnod
    ```
 4. check the running containers by `sudo docker ps`, and the terminal will output contents like the following information
    ```sh
-   0283a5ce56b1   botnode       "/bin/sh -c sh /bin/…"   12 seconds ago   Up 11 seconds   8545/tcp, 30303/tcp, 30303/udp   bot3
-   76f6ea76800f   botnode       "/bin/sh -c sh /bin/…"   21 seconds ago   Up 20 seconds   8545/tcp, 30303/tcp, 30303/udp   bot2
-   7a26db02df5e   botnode       "/bin/sh -c sh /bin/…"   29 seconds ago   Up 28 seconds   8545/tcp, 30303/tcp, 30303/udp   bot1
-   1081a3dfe133   node       "/bin/sh -c sh /bin/…"   2 minutes ago    Up 2 minutes    8545/tcp, 30303/tcp, 30303/udp   node3
-   1292d29fb763   node       "/bin/sh -c sh /bin/…"   2 minutes ago    Up 2 minutes    8545/tcp, 30303/tcp, 30303/udp   node2
-   bf9027c06ece   node       "/bin/sh -c sh /bin/…"   3 minutes ago    Up 3 minutes    8545/tcp, 30303/tcp, 30303/udp   node1
-   08a8ec2e2619   bootnode   "/bin/sh -c sh /bin/…"   18 minutes ago   Up 18 minutes   8545/tcp, 30303/tcp, 30303/udp   boot
+   CONTAINER ID   IMAGE      COMMAND                  CREATED          STATUS          PORTS                            NAMES
+   aa7ae8dc41e7   botnode    "/bin/sh -c sh /bin/…"   3 minutes ago    Up 3 minutes    8545/tcp, 30303/tcp, 30303/udp   bot3
+   dc29bec29caf   botnode    "/bin/sh -c sh /bin/…"   4 minutes ago    Up 4 minutes    8545/tcp, 30303/tcp, 30303/udp   bot2
+   b694e0f858eb   botnode    "/bin/sh -c sh /bin/…"   5 minutes ago    Up 5 minutes    8545/tcp, 30303/tcp, 30303/udp   bot1
+   8946118bc9e9   node       "/bin/sh -c sh /bin/…"   7 minutes ago    Up 7 minutes    8545/tcp, 30303/tcp, 30303/udp   node3
+   6d6de5f0b93d   node       "/bin/sh -c sh /bin/…"   8 minutes ago    Up 8 minutes    8545/tcp, 30303/tcp, 30303/udp   node2
+   99c0f536eda2   node       "/bin/sh -c sh /bin/…"   9 minutes ago    Up 9 minutes    8545/tcp, 30303/tcp, 30303/udp   node1
+   de62c6d9b6fa   bootnode   "/bin/sh -c sh /bin/…"   11 minutes ago   Up 11 minutes   8545/tcp, 30303/tcp, 30303/udp   boot
    ```
