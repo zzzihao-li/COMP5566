@@ -1,3 +1,5 @@
+In the following, I will demostrate how to eclipse an Ethereum node.
+
 After the preparation, there are seven nodes (1 bootnode, 3 honest nodes, and 3 bot nodes) in your computer.
 
 1. We fist launch the blockchain network by running the bootnode, and compute its enode url.
