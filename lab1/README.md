@@ -14,7 +14,9 @@ Each part has it's own Dockerfile and scripts. The scripts are as follows:
     * generate_genesis.py: used to generate genesis block.
     * start_console.sh: used inside a container to start Geth console.
     * genesis.json: genesis block template (without funds).
-  
+
+Besides, if you want to build the lab environment from scratch, please refer to the **preparation.md** file.
+
 ## Tips
 1. **sudo docker build -t xxx .** build an image with the name *xxx* (DO NOT forget the "." in the last)
 2. **sudo docker run -it --name xxx** start a container with the name *xxx*
