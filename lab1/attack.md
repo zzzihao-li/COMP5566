@@ -38,11 +38,13 @@ After the preparation, there are seven nodes (1 bootnode, 3 honest nodes, and 3 
 
    Then, repeat the same steps to launch the geth clients in node2 and node3.
 
+   Besides, according to the contents outputed in terminal, the ip addresses of node1, node2, and node3 are "172.17.0.3, 172.17.0.4, and 172.17.0.5", respectively.
+
    In node3, after launching the geth client, you can check whether all three nodes are connected to the network by checking the peers of node3.
    ```sh
    admin.peers
    ```
-   Then the terminal will output contents like the following, which means node3 has three peers, and ip addresses of the three peers are "172.17.0.4, 172.17.0.3, 172.17.0.2" 
+   Then the terminal will output contents like the following, which means node3 has three peers according to the ip addresses, i.e., the bootnode, node1, and node2.
    ```sh
    [{
         caps: ["eth/63"],
@@ -108,6 +110,8 @@ After the preparation, there are seven nodes (1 bootnode, 3 honest nodes, and 3 
    You can exit bot1 with keeping it alive.
 
    Then, repeat the same steps to launch the geth clients in bot2 and bot3.
+
+   Besides, according to the contents outputed in terminal, the ip addresses of bot1, bot2, and bot3 are "172.17.0.6, 172.17.0.7, and 172.17.0.8", respectively.
 
 4. We get back to node1, and reboot it.
    ```sh
