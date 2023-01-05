@@ -9,8 +9,11 @@ After the preparation, there are seven nodes (1 bootnode, 3 honest nodes, and 3 
    admin.nodeInfo
    ```
    After `sudo docker attach boot`, we enter into the running bootnode.
+   
    After `ip addr`, we can get the ip addr of bootnode, e.g., **172.17.0.2**.
+   
    After `./start_console.sh`, we launch the geth client in bootnode.
+   
    After `admin.nodeInfo`, we get the node id and port of the bootnode, e.g., **e68f458cfc42bebc5b9212a3b5b15faf8335506ea3043505efaf9fd550aa44074e6c9f0777c5d33928d04cdfa671f8aeba98eda9f4f0203d725844fd4495dfc4** and **30303**.
 
    Hence, the enode url of the bootnode is **enode://e68f458cfc42bebc5b9212a3b5b15faf8335506ea3043505efaf9fd550aa44074e6c9f0777c5d33928d04cdfa671f8aeba98eda9f4f0203d725844fd4495dfc4@172.17.0.2:30303**
@@ -22,7 +25,10 @@ After the preparation, there are seven nodes (1 bootnode, 3 honest nodes, and 3 
    ./start_console.sh enode://e68f458cfc42bebc5b9212a3b5b15faf8335506ea3043505efaf9fd550aa44074e6c9f0777c5d33928d04cdfa671f8aeba98eda9f4f0203d725844fd4495dfc4@172.17.0.2:30303
    ```
    After `sudo docker attach node1`, we enter into the running node1.
-   After `./start_console.sh enode://e68f458cfc42bebc5b9212a3b5b15faf8335506ea3043505efaf9fd550aa44074e6c9f0777c5d33928d04cdfa671f8aeba98eda9f4f0203d725844fd4495dfc4@172.17.0.2:30303`, we launch the geth client in node1 with connecting to the bootnode.
+   
+   After `./start_console.sh enode://e68f458cfc42bebc5b9212a3b5b15faf8335506ea3043505efaf9fd550aa44074e6c9f0777c5d33928d04cdfa671f8aeba98eda9f4f0203d725844fd4495dfc4@172.17.0.2:30303`, we launch the geth 
+   client in node1 with connecting to the bootnode.
+   
    You can exit node1 with keeping it alive.
 
    Then, repeat the same steps to launch the geth clients in node2 and node3.
