@@ -8,10 +8,10 @@
 7. run `sudo docker image ps` to check the images, the terminal will output contents like the following information
    ```sh
    REPOSITORY           TAG       IMAGE ID       CREATED          SIZE
-   botnode              latest    035184f934c1   2 hours ago      384MB
-   node                 latest    3fa445ef9361   2 hours ago      384MB
-   bootnode             latest    a5c759aa8ae6   2 hours ago      384MB
-   ethereum/client-go   v1.6.6    18a3fff827f9   5 years ago      384MB
+   botnode              latest    b5e93a73f3e5   6 seconds ago        384MB
+   node                 latest    5d77127535f8   42 seconds ago       384MB
+   bootnode             latest    de4ca6d53244   About a minute ago   384MB
+   ethereum/client-go   v1.6.6    18a3fff827f9   5 years ago          384MB
    ```
 
 ## step 2: start containers
