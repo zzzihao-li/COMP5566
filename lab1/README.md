@@ -15,7 +15,8 @@ Each part has it's own Dockerfile and scripts. The scripts are as follows:
     * start_console.sh: used inside a container to start Geth console.
     * genesis.json: genesis block template (without funds).
 
-Besides, if you want to build the lab environment from scratch, please refer to the **preparation.md** file.
+If you want to build the lab environment from scratch, please refer to the **preparation.md** file.
+Besides, **attack.md** file show how to eclipse an Ethereum node.
 
 ## Tips
 1. `sudo docker build -t xxx .` build an image with the name `xxx` (DO NOT forget the "." in the last)
