@@ -17,6 +17,7 @@ After the preparation, there are seven nodes (1 bootnode, 3 honest nodes, and 3 
    After `admin.nodeInfo`, we get the node id and port of the bootnode, e.g., **e68f458cfc42bebc5b9212a3b5b15faf8335506ea3043505efaf9fd550aa44074e6c9f0777c5d33928d04cdfa671f8aeba98eda9f4f0203d725844fd4495dfc4** and **30303**.
 
    Hence, the enode url of the bootnode is **enode://e68f458cfc42bebc5b9212a3b5b15faf8335506ea3043505efaf9fd550aa44074e6c9f0777c5d33928d04cdfa671f8aeba98eda9f4f0203d725844fd4495dfc4@172.17.0.2:30303**
+   
    Finally, you can exit the bootnode with keeping it alive.
 
 2. We then launch the 3 honest nodes with connecting to the bootnode. (I have set the maxpeers parameter as 3 for honest nodes in the `./start_console.sh`)
