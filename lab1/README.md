@@ -4,10 +4,11 @@ Blockchain eclipse demonstration
 ### ***Imporant notice:*** This is a PoC attack. It was performed in a controlled environment.
 
 This project uses Geth v1.6.6 (Ethereum Client) and runs on Docker.
-It is composed of two parts:
+It is composed of three parts:
 
     * Bootnode: first node to run on the network.
     * Node: nodes connecting to bootnode.
+    * Botnode: bots to perform eclipse attacks
 
 Each part has it's own Dockerfile and scripts. The scripts are as follows:
 
