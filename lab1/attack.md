@@ -8,7 +8,7 @@ After the preparation, there are seven nodes (1 bootnode, 3 honest nodes, and 3 
    ./start_console.sh
    admin.nodeInfo
    ```
-   After `sudo docker attach boot`, we enter into the running bootnode.
+   After `sudo docker attach boot`, we enter into the running bootnode container.
    
    After `ip addr`, we can get the ip addr of bootnode, e.g., **172.17.0.2**.
    
@@ -24,7 +24,7 @@ After the preparation, there are seven nodes (1 bootnode, 3 honest nodes, and 3 
    sudo docker attach node1
    ./start_console.sh enode://e68f458cfc42bebc5b9212a3b5b15faf8335506ea3043505efaf9fd550aa44074e6c9f0777c5d33928d04cdfa671f8aeba98eda9f4f0203d725844fd4495dfc4@172.17.0.2:30303
    ```
-   After `sudo docker attach node1`, we enter into the running node1.
+   After `sudo docker attach node1`, we enter into the running node1 container.
    
    After `./start_console.sh enode://e68f458cfc42bebc5b9212a3b5b15faf8335506ea3043505efaf9fd550aa44074e6c9f0777c5d33928d04cdfa671f8aeba98eda9f4f0203d725844fd4495dfc4@172.17.0.2:30303`, we launch the geth 
    client in node1 with connecting to the bootnode.
