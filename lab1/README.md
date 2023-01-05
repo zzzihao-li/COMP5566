@@ -19,8 +19,10 @@ Besides, if you want to build the lab environment from scratch, please refer to 
 
 ## Tips
 1. `sudo docker build -t xxx .` build an image with the name `xxx` (DO NOT forget the "." in the last)
-2. `sudo docker run -it --name xxx` start a container with the name `xxx`
+2. `sudo docker run --name xxx -it` start a container with the name `xxx`
 3. `Ctrl + P + Q` exit a container without stopping it
 4. `sudo docker attach` enter a running container
 5. `ip addr` check current IP address
 6. `sudo docker exec xxx ip addr` execute *ip addr* in the container `xxx`
+7. `sudo docker ps -a` display all containers
+8. `sudo docker rm -f xxx` remove the container `xxx`
