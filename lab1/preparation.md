@@ -1,3 +1,5 @@
+You need to install "docker" into your computer first if it is not installed.
+
 ## Step 1: build docker images
 1. enter into the `bootnode` path, e.g., `cd ./bootnode/`
 2. run `sudo docker build -t bootnode .` to build the `bootnode` image
