@@ -23,14 +23,14 @@ python3 -m pip install -r ./requirements.txt
 
   ```bash
   $ docker pull ethereum/client-go:v1.9.7
-  $ docker run -it --entrypoint /bin/sh -p 8545:8545 -p 30303:30303 -v $PWD/asset/genesis.json:/genesis.json --name nodeA ethereum/client-go:v1.9.7
+  $ docker run -it --entrypoint /bin/sh -p 8545:8545 -p 30303:30303 -v $PWD/genesis.json:/genesis.json --name nodeA ethereum/client-go:v1.9.7
   ```
 
 - `Node B`: geth v1.9.20
 
   ```bash
   $ docker pull ethereum/client-go:v1.9.20
-  $ docker run -it --entrypoint /bin/sh -p 8546:8546 -p 30304:30304 -v $PWD/asset/genesis.json:/genesis.json --name nodeA ethereum/client-go:v1.9.20`
+  $ docker run -it --entrypoint /bin/sh -p 8546:8546 -p 30304:30304 -v $PWD/genesis.json:/genesis.json --name nodeB ethereum/client-go:v1.9.20s
   ```
 
 2. Then enter each contrainer to initiate the blockchain. Here is an example for `Node A`
@@ -39,8 +39,7 @@ python3 -m pip install -r ./requirements.txt
    $ docker exec -it nodeA /bin/sh
    $ geth --datadir .ethereum account new
    $ geth --datadir .ethereum init /genesis.json
-   $ geth --datadir .ethereum --networkid 1337 --port 30303 --rpc --rpcaddr "0.0.0.0" --rpcport 8545 --rpccorsdomain "*" \
-   		--rpcapi="db,eth,net,web3,personal,web3,miner" --allow-insecure-unlock --miner.threads 4 --maxpeers=3
+   $ geth --datadir .ethereum --networkid 1337 --port 30303 --rpc --rpcaddr "0.0.0.0" --rpcport 8545 --rpccorsdomain "*" --rpcapi="db,eth,net,web3,personal,web3,miner" --allow-insecure-unlock --miner.threads 4 --maxpeers=3
    ```
 
 3. Enter `Node A` to  add `Node B`

