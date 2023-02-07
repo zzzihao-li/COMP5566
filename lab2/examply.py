@@ -51,7 +51,7 @@ def main():
 
     acctC = w3.geth.personal.new_account("")
     w3.geth.personal.unlock_account(acctC, "", 99999)
-    _txr = w3.eth.sendTransaction({'from': Pool, 'to': acctC, 'value': 5, 'gas': 3000000})
+    _txr = w3.eth.sendTransaction({'from': Pool, 'to': acctC, 'value': 10000000000000000, 'gas': 3000000})
     w3.eth.wait_for_transaction_receipt(_txr)
 
     res = solcx.compile_source(expAgentSol, output_values=[
