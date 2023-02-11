@@ -1,4 +1,4 @@
-In the 4th Lab tutorial, we will use Foundry to reproduce typical attacks towards Ethereum smart contracts.
+In the 4th Lab tutorial, we will use [Foundry](https://book.getfoundry.sh/) to reproduce typical attacks towards Ethereum smart contracts.
 
 ## Environment requiremet
 1. You need to prepare a computer with Linux OS or deploy a Linux VM image in your computer.
