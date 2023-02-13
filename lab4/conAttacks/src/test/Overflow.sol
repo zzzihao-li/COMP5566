@@ -37,10 +37,8 @@ contract TimeLock {
     function withdraw() public {
         require(balances[msg.sender] > 0, "Insufficient funds");
         require(block.timestamp > lockTime[msg.sender], "Lock time not expired");
-
         uint amount = balances[msg.sender];
         balances[msg.sender] = 0;
-
         (bool sent, ) = msg.sender.call{value: amount}("");
         require(sent, "Failed to send Ether");
     }
@@ -50,7 +48,6 @@ contract ContractTest is Test {
     TimeLock TimeLockContract;
     address alice;
     address bob;
-
     function setUp() public {
         TimeLockContract = new TimeLock();
         alice = vm.addr(1);
@@ -58,7 +55,7 @@ contract ContractTest is Test {
         vm.deal(alice, 1 ether);   
         vm.deal(bob, 1 ether);
     }    
-           
+       
     function testFailOverflow() public {
         console.log("Alice balance", alice.balance);
         console.log("Bob balance", bob.balance);
