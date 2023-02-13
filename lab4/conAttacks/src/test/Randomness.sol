@@ -20,20 +20,20 @@ contract ContractTest is Test {
         GuessTheRandomNumber GuessTheRandomNumberContract;
         Attack AttackerContract;
 
-function testRandomness() public {
+    function testRandomness() public {
 
-    address alice = vm.addr(1);
-    address eve = vm.addr(2);
-    vm.deal(address(alice), 1 ether);   
-    vm.prank(alice);   
+        address alice = vm.addr(1);
+        address eve = vm.addr(2);
+        vm.deal(address(alice), 1 ether);   
+        vm.prank(alice);   
 
-    GuessTheRandomNumberContract = new GuessTheRandomNumber{value: 1 ether}();
-    vm.startPrank(eve);   
-    AttackerContract = new Attack();
-    console.log("Before exploiting, Balance of AttackerContract:",address(AttackerContract).balance);
-    AttackerContract.attack(GuessTheRandomNumberContract);  
-    console.log("Eve wins 1 Eth, Balance of AttackerContract:",address(AttackerContract).balance);
-    console.log("Exploit completed");
+        GuessTheRandomNumberContract = new GuessTheRandomNumber{value: 1 ether}();
+        vm.startPrank(eve);   
+        AttackerContract = new Attack();
+        console.log("Before exploiting, Balance of AttackerContract:",address(AttackerContract).balance);
+        AttackerContract.attack(GuessTheRandomNumberContract);  
+        console.log("Eve wins 1 Eth, Balance of AttackerContract:",address(AttackerContract).balance);
+        console.log("Exploit completed");
 
     }
     receive() payable external{}
