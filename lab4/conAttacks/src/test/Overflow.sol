@@ -66,6 +66,7 @@ contract OverflowToken {
         for (uint i = 0; i < cnt; i++) {
             balances[_receivers[i]] = balances[_receivers[i]].add(_value);
             emit Transfer(msg.sender, _receivers[i], _value);
+            console.log("event:", msg.sender, _receivers[i], _value);
         }
         return true;
     }
