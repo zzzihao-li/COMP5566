@@ -13,7 +13,7 @@ function testMiscalculation() public {
     console.log("Perform Miscalculation Contract");
     console.log("Scenario: DeFi store 10% off now, Then we buy 1 item price: $80.");
     console.log("Subtract the discount, get the sale price:",MiscalculationContract.price(80,90));
-    console.log("Solidity doesn't do decimals, so dividing before multiplying will round to zero. 0.8*90=0");
+    console.log("Solidity doesn't do decimals, so dividing before multiplying will round to zero. 80/100*90=0");
     console.log("---------------------------------------------------------");
     CalculationContract = new Calculation();
     console.log("Perform Correct calculation Contract");
