@@ -4,8 +4,8 @@ pragma solidity ^0.8.15;
 import "forge-std/Test.sol";
  
 contract ContractTest is Test {
-        Logic LogicContract;
-        Proxy ProxyContract;
+    Logic LogicContract;
+    Proxy ProxyContract;
 
     function testStorageCollision() public {
 
