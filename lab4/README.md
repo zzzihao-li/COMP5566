@@ -7,7 +7,7 @@ In the 4th Lab tutorial, we will use [Foundry](https://book.getfoundry.sh/) to r
    - `sudo docker image ls` to check the downloaded images
    - `sudo docker run --name forge-demo -it ghcr.io/foundry-rs/foundry /bin/sh` to run a docker container
 
-Tips: From [instructions](https://book.getfoundry.sh/getting-started/installation), you can also install Foundry by other methods in it, but there could be some issues for installing in different environments. Hence, I suggest to install the docker image configured Foundry.
+> Tips: From [instructions](https://book.getfoundry.sh/getting-started/installation), you can also install Foundry by other methods in it, but there could be some issues for installing in different environments. Hence, I suggest to install the docker image configured Foundry.
 
 3. After entering into the container, clone code scripts of our repos for this lab into the container:
    - `git clone https://github.com/zzzihao-li/COMP5566.git`
