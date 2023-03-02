@@ -32,7 +32,7 @@ contract ContractTest is Test {
         vm.deal(address(attack), 2 ether); 
     }
 
-function testReentrancy() public {
+    function testReentrancy() public {
         attack.Attack();  // exploit here
     }
 }
