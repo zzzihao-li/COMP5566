@@ -1,0 +1,6 @@
+[submodule "lab7/CVE-2022-27134"]
+	path = lab7/CVE-2022-27134
+	url = https://github.com/Kenun99/CVE-batdappboomx.git
+[submodule "lab7/wasai"]
+	path = lab7/wasai
+	url = https://github.com/wasai-project/wasai.git
