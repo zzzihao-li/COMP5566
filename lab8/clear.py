@@ -1,8 +1,6 @@
 from pyteal import *
 
 def clear():
-    
-
     return Int(1)
 
 if __name__ == "__main__":
