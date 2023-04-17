@@ -3,9 +3,9 @@ pragma solidity 0.8.10;
 
 import "forge-std/Test.sol";
 import "forge-std/console2.sol";
-import "./interfaces/IWETH9.sol";
-import "./interfaces/IUniswap.sol";
-import "./interfaces/IERC20.sol";
+import "../../interfaces/IWETH9.sol";
+import "../../interfaces/IUniswap.sol";
+import "../../interfaces/IERC20.sol";
 
 contract ContractTest is Test {
   IERC20 WBTC = IERC20(0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599);
