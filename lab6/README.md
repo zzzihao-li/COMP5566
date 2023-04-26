@@ -13,3 +13,7 @@ In the 4th Lab tutorial, we will use [Foundry](https://book.getfoundry.sh/) to r
    - `git clone https://github.com/zzzihao-li/COMP5566.git`
   
   Now you can find scripts for playing four kinds of typical attacks in dict `./COMP5566/lab4/conAttacks/src/test/`
+
+## Slides
+
+Link: https://docs.google.com/presentation/d/1JkaX7-xT4lY9r25AMPPBFszXwMNEjkXu_SLOc7ZljNk/edit?usp=sharing
